@@ -1,0 +1,56 @@
+<ion-header color="primary">
+
+    <ion-navbar color="primary">
+      <ion-title>PERFIL</ion-title>
+      <ion-buttons right>
+        <button (click)="showOverlay()" ion-button icon-only><ion-icon name="add-circle"></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content class="bg-style">
+  
+    <div class="form-content">
+      <div class="input-container">
+        <div class="input-label">Nome</div>      
+        <input type="text" class="custom-input" [(ngModel)]="profileData.nome" (input)="onChanges($event.target.value)">
+      </div>
+  
+      <div class="input-container">
+        <div class="input-label">E-mail</div>      
+        <input type="text" class="custom-input" [(ngModel)]="profileData.email" (input)="onChanges($event.target.value)">
+      </div>
+  
+      <div class="input-container">
+        <div class="input-label">Telefone (opcional)</div>      
+        <input type="text" class="custom-input" [(ngModel)]="profileData.telefone" (input)="onChanges($event.target.value)">
+      </div>
+      
+      <div class="input-container">
+        <div class="input-label">Senha</div> 
+        <input #passwordInput type="password" [(ngModel)]="profileData.senha" class="custom-input" (input)="onChanges($event.target.value)">
+        <button class="view-password-button-login password-button" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleViewPassword($event)">
+          <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewPasswordValue ? 'light' : 'primary' }}"></ion-icon>
+        </button>
+      </div>
+      <div class="input-container">
+        <div class="input-label">Repetir senha</div> 
+        <input #confirmPasswordInput type="password" [(ngModel)]="profileData.confirmPassword" class="custom-input" (input)="onChanges($event.target.value)">
+        <button class="view-password-button-login repeat-password-button" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleConfirmPassword($event)">
+          <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewConfirmPasswordValue ? 'light' : 'primary' }}"></ion-icon>
+        </button>
+      </div>
+      <button class="button-text button-login" color="primary" ion-button full round medium (click)="updateUser()" [disabled]="!saveButtonEnabled()">CADASTRAR</button>
+    </div>
+    <baby-input-overlay 
+    [content-title]="'ENCONTROU UMA PROMOÇÃO?'"
+    [content-description]="'Conta pra gente! Cole o link da promoção no campo abaixo.'"
+    [input-label]="'Link da promoção'"
+    [button-name]="'ENVIAR PROMOÇÃO'"
+    [hidden]="overlayHidden">
+    
+  </baby-input-overlay>
+  </ion-content>
+  

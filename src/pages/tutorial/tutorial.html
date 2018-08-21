@@ -1,0 +1,16 @@
+<ion-header color="primary">
+  <ion-navbar color="primary">
+    <ion-title>BEM VINDO</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="bg-style" padding>
+    <ion-slides pager>
+      <ion-slide *ngFor="let slide of slides">
+        <img [src]="slide.image" class="slide-image"/>
+        <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+        <p [innerHTML]="slide.description"></p>
+        <button class="button-text button-tutorial" color="primary" ion-button full round medium (click)='enterApp();'>{{slide.button}}</button>
+      </ion-slide>
+    </ion-slides>
+
+</ion-content>

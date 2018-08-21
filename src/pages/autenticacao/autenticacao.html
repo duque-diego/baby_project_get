@@ -1,0 +1,17 @@
+<ion-content class="bg-style">
+    
+    <ion-img class="bg-style logo-img" src="assets/imgs/diaper.svg"></ion-img>
+    <div class="container-text">
+      <div text-center class="title-text">PROMOÇÃO DE FRALDAS</div>
+      <div padding text-center class="slogan-text">As suas marcas favoritas com os melhores preços.</div>    
+      <div margin>
+        <button class="button-text" color="primary" ion-button block round medium (click)='loginEmail();'>
+          <ion-icon class="icons" name="mail"></ion-icon>ENTRAR COM E-MAIL
+        </button>
+        <button margin-top class="button-text" color="facebook" ion-button block round medium (click)='loginFacebook();'>
+          <ion-icon class="icons" name="logo-facebook"></ion-icon>ENTRAR COM FACEBOOK
+        </button>
+      </div>
+      <div text-center margin-top class="signup-text">Não tem uma conta ainda? <span class="span-text" (click)="presentSignUp()">Cadastrar</span></div>
+    </div>
+</ion-content>

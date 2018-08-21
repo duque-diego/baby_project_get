@@ -1,0 +1,166 @@
+<!--
+  Generated template for the MyBabyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header color="primary">
+
+  <ion-navbar color="primary">
+    <ion-title>MEUS BEBÊS</ion-title>
+    <ion-buttons right>
+      <button (click)="showOverlay()" ion-button icon-only><ion-icon name="add-circle"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-style" padding>
+    <div text-center class="title-text">MEU BEBÊ</div>
+    <div class="input-container-my-baby">
+      <div class="input-label">Nome</div>      
+      <input type="text" class="custom-input" [(ngModel)]="preferences.babyName">
+    </div>
+  
+    <div class="input-container-my-baby">
+      <div class="input-label">Data de Nascimento</div>      
+      <input type="text" class="custom-input" [(ngModel)]="preferences.birthDate">
+    </div>
+  
+    <div class="input-container-my-baby">
+      <div class="input-label">Peso</div>      
+      <input type="text" class="custom-input" [(ngModel)]="preferences.weight">
+    </div>
+    <div text-center class="add-baby-text">Adicionar bebê 
+        <img [src]="'assets/imgs/plus.svg'" class="plus-img"/>
+    </div>
+    <div text-center class="title-text">FRALDAS</div>
+
+    <div class="input-label">Marcas Favoritas</div> 
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[0]?.checada}} (ionChange)="setFraldaChecked($event, 0)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[0]?.nome}}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[1]?.checada}} (ionChange)="setFraldaChecked($event, 1)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[1]?.nome}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[2]?.checada}} (ionChange)="setFraldaChecked($event, 2)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[2]?.nome}}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[3]?.checada}} (ionChange)="setFraldaChecked($event, 3)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[3]?.nome}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[4]?.checada}} (ionChange)="setFraldaChecked($event, 4)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[4]?.nome}}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[5]?.checada}} (ionChange)="setFraldaChecked($event, 5)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[5]?.nome}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[6]?.checada}} (ionChange)="setFraldaChecked($event, 6)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[6]?.nome}}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{fraldas[7]?.checada}} (ionChange)="setFraldaChecked($event, 7)"></ion-checkbox>
+          <ion-label class="checkbox-label">{{fraldas[7]?.nome}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="input-label">Tamanho</div>
+    <ion-grid>
+        <ion-row>
+          <ion-col >
+            <div [ngClass]="tamanhos[0]?.checada ? 'round-button-div-checked':'round-button-div'" class="rn" (click)="selecionaTamanho(0)">{{tamanhos[0]?.nome}}</div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="tamanhos[1]?.checada ? 'round-button-div-checked':'round-button-div'" class="p" (click)="selecionaTamanho(1)">{{tamanhos[1]?.nome}}</div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="tamanhos[2]?.checada ? 'round-button-div-checked':'round-button-div'" class="m" (click)="selecionaTamanho(2)">{{tamanhos[2]?.nome}}</div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="tamanhos[3]?.checada ? 'round-button-div-checked':'round-button-div'" class="g" (click)="selecionaTamanho(3)">{{tamanhos[3]?.nome}}</div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="tamanhos[4]?.checada ? 'round-button-div-checked':'round-button-div'" class="xg" (click)="selecionaTamanho(4)">{{tamanhos[4]?.nome}}</div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="tamanhos[5]?.checada ? 'round-button-div-checked':'round-button-div'" class="xxg" (click)="selecionaTamanho(5)">{{tamanhos[5]?.nome}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="input-label">Lojas Favoritas</div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[0]?.checada}} (ionChange)="setLojaChecked($event, 0)"></ion-checkbox>
+            <img [src]="'assets/imgs/americanas.svg'" class="img-logo"/>
+          </ion-col>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[1]?.checada}} (ionChange)="setLojaChecked($event, 1)"></ion-checkbox>
+            <img [src]="'assets/imgs/carrefour.svg'" class="img-logo"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[2]?.checada}} (ionChange)="setLojaChecked($event, 2)"></ion-checkbox>
+            <img [src]="'assets/imgs/onofre.svg'" class="img-logo"/>
+          </ion-col>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[3]?.checada}} (ionChange)="setLojaChecked($event, 3)"></ion-checkbox>
+            <img [src]="'assets/imgs/drogasil.svg'" class="img-logo"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[4]?.checada}} (ionChange)="setLojaChecked($event, 4)"></ion-checkbox>
+            <img [src]="'assets/imgs/bebe_store.svg'" class="img-logo"/>
+          </ion-col>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[5]?.checada}} (ionChange)="setLojaChecked($event, 5)"></ion-checkbox>
+            <img [src]="'assets/imgs/walmart.svg'" class="img-logo"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[6]?.checada}} (ionChange)="setLojaChecked($event, 6)"></ion-checkbox>
+            <img [src]="'assets/imgs/onofre.svg'" class="img-logo"/>
+          </ion-col>
+          <ion-col>
+            <ion-checkbox color="primary" checked={{lojas[7]?.checada}} (ionChange)="setLojaChecked($event, 7)"></ion-checkbox>
+            <img [src]="'assets/imgs/magazineluiza.svg'" class="img-logo"/>
+          </ion-col>
+        </ion-row>
+        
+    </ion-grid>
+    
+    <div class="input-container-my-baby">
+      <div class="input-label">Quanto você deseja pagar pro fralda? É com base nesse valor que iremos listar e
+          te manter informado sobre as melhores promoções.
+      </div>     
+      <input type="text" class="custom-input" [(ngModel)]="preferences.price">
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-checkbox color="primary" checked={{preferences.checked}} [(ngModel)]="preferences.checked"></ion-checkbox>
+          <ion-label class="my-baby-remember-me">Avise-me de promoções imperdíveis.</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button class="button-text button-login" color="primary" (click)="sendPreferences()" ion-button full round medium>ENVIAR</button>     
+</ion-content>

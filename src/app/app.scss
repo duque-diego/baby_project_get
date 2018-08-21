@@ -1,0 +1,67 @@
+
+.bg-style{
+    background: #FFFEF2;
+}
+
+.logo-img{
+    position: relative;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top:40%;
+    width: 40%; 
+    height: 23%;
+    margin-bottom: 5%;
+}
+
+.custom-input {
+    border-radius: 25px;
+    border: 1px solid #119BF4;
+    padding: 10px; 
+    width: 90%;
+    margin-left: 5%;
+    color:#119BF4;
+    padding-left: 4%;  
+    background-color : #FFFEF2;
+}
+
+.container-text{
+    position: relative;
+}
+
+.view-password-button{
+    position: relative;
+    right: 11%;
+    bottom: 2%;
+}
+
+.span-text{
+    color:#119BF4;
+}
+
+.signup-text{
+    font-size: 0.85em;
+}
+
+.input-container{
+    margin: 0% 5% 5% 5%;
+}
+
+.input-label{
+    margin-left: 6%;
+    margin-bottom: 1%;
+    font-size: 0.8em;
+}
+
+ion-icon {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    background-size: 18px;
+
+    &[ng-reflect-name="customicon"] {
+        background-image: url('../assets/imgs/baby_unselected.svg');
+        &[ng-reflect-is-active="true"] {
+            background-image: url('../assets/imgs/baby_selected.svg');
+        }
+    }
+}

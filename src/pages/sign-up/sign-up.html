@@ -1,0 +1,61 @@
+<ion-header color="primary">
+
+  <ion-navbar color="primary">
+    <ion-title>CRIAR CONTA</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg-style">
+
+  <form [formGroup]="registerForm" novalidate>
+    <div class="form-content">
+      <div class="input-container">
+        <div class="input-label">Nome</div>      
+        <input type="text" class="custom-input" [(ngModel)]="profileData.name" formControlName="nameVal">
+      </div>
+
+      <div class="input-container">
+        <div class="input-label">E-mail</div>      
+        <input type="text" class="custom-input" [(ngModel)]="profileData.email" formControlName="emailVal">
+      </div>
+
+      <div class="input-container">
+        <div class="input-label">Telefone (opcional)</div>      
+        <input #phoneInput sasMask="phoneNumber" type="tel"  class="custom-input" [(ngModel)]="profileData.phone" formControlName="phoneVal">
+      </div>
+
+      <div class="input-container">
+        <div class="input-label">CPF</div>      
+        <input #cpfInput sasMask="cpf" type="tel" class="custom-input" [(ngModel)]="profileData.cpf" formControlName="cpfVal">
+      </div>
+
+      <!-- <div class="input-container">
+        <div class="input-label">Telefone (opcional)</div>      
+        <input type="text"  class="custom-input" [(ngModel)]="profileData.phone" formControlName="phoneVal">
+      </div>
+
+      <div class="input-container">
+        <div class="input-label">CPF</div>      
+        <input type="text" class="custom-input" [(ngModel)]="profileData.cpf" formControlName="cpfVal">
+      </div> -->
+      
+      <div class="input-container">
+        <div class="input-label">Senha</div> 
+        <input #passwordInput type="password" class="custom-input" [(ngModel)]="profileData.password" formControlName="passwordVal">
+        <button class="view-password-button-login password-button" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleViewPassword($event)">
+          <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewPasswordValue ? 'light' : 'primary' }}"></ion-icon>
+        </button>
+      </div>
+      <div class="input-container">
+        <div class="input-label">Repetir senha</div> 
+        <input #confirmPasswordInput type="password" class="custom-input" [(ngModel)]="profileData.confirmPassword" formControlName="confirmPasswordVal">
+        <button class="view-password-button-login repeat-password-button" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleConfirmPassword($event)">
+          <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewConfirmPasswordValue ? 'light' : 'primary' }}"></ion-icon>
+        </button>
+      </div>
+      <button class="button-text button-login" color="primary" ion-button full round medium (click)="registerUser()" [disabled]="saveButtonEnabled()">CADASTRAR</button>
+    </div>
+  </form>
+</ion-content>

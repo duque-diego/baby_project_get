@@ -1,0 +1,38 @@
+<ion-header color="primary">
+
+  <ion-navbar color="primary">
+    <ion-title>ENTRAR COM E-MAIL</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg-style">
+  <div class="container-text-login">
+    <div class="bg-style img-logo-position" ></div> 
+    
+    <form [formGroup]="loginForm" novalidate>
+      <div class="input-container">
+        <div class="input-label">E-mail</div>      
+        <input type="text" [(ngModel)]="loginValue" formControlName="id" class="custom-input">
+      </div>
+      <div class="input-container">
+        <div class="input-label">Senha</div> 
+        <input #passwordInput type="password" [(ngModel)]="passwordValue" formControlName="password" maxlength="6" class="custom-input">
+        <button class="view-password-button-login" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleViewPassword($event)">
+          <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewPasswordValue ? 'light' : 'primary' }}"></ion-icon>
+        </button>
+      </div>
+      <button class="button-text login-button" color="primary" ion-button full round medium (click)="doLogin()" [disabled]="loginButtonEnabled()">LOGIN</button>
+    </form>
+    <div text-center margin-top class="signup-text">Esqueceu sua senha? <span class="span-text" (click)='showOverlay();'>Clique aqui</span></div>  
+  
+  </div>
+  <baby-input-overlay 
+    [content-title]="'ESQUECEU A SENHA?'"
+    [content-description]="'Não se preocupe. Digite seu e-mail para criar uma nova senha.'"
+    [input-label]="'E-mail'"
+    [button-name]="'ENVIAR E-MAIL'"
+    [hidden]="overlayHidden">
+  </baby-input-overlay>
+     
+</ion-content>

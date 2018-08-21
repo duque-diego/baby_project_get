@@ -1,0 +1,13 @@
+  <div class="my-overlay"></div>
+  <div [ngClass]="inputClicked === true ? 'content-overlay input-clicked-overlay' : 'content-overlay'">
+    <div class="container-text-overlay"> 
+    
+    <div text-center class="title-text">{{contentTitle}}</div>
+    <div padding-top text-center class="slogan-text">{{contentDescription}}</div>
+      <div class="input-container">
+        <div class="input-label">{{inputLabel}}</div>      
+        <input type="text" (click)="clickMethod()" (blur)="blurMethod()" class="custom-input">
+      </div>
+      <button class="button-text login-button" color="primary" ion-button full round medium>{{buttonName}}</button>
+    </div>
+  </div>

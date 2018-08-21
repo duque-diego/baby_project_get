@@ -1,0 +1,132 @@
+page-promotions {
+
+    .filter-button{
+        margin-left: 30%;
+    }
+
+    .number-alerts{
+        margin-top: 5%;
+        color: #119BF4;
+        font-weight: 600;
+        position: relative;
+        font-size: 0.9em;
+        width: 107%;
+    }
+
+    .alerts-information-container{
+        display: flex;
+        width: 100%;
+        height: 15%;
+        position: relative;
+    }
+
+    .alert-information-container{
+        position: relative;
+        display: flex;
+        background-color: #FFFEF2;;
+        width: 100%;
+        height: 45%;
+        border-bottom-width: 3px;
+        border-bottom-color: #E8E8E8;
+        border-bottom-style: solid;
+        margin-top: 3%;
+    }
+
+    .img-alert{
+        position: relative;
+        width: 25%;
+        height: 100%;
+    }
+
+    .information-alert{
+        position: relative;
+        height: 100%;
+        width: 50%;
+        padding-top: 3%;
+        padding-left: 1%;
+    }
+
+    .information-alert-title{
+        position: relative;
+        height: 25%;
+        width: 100%;
+        font-weight: 600;
+        font-size: 0.77em;
+        margin-top: 8%;
+    }
+
+    .information-alert-text{
+        position: relative;
+        height: 25%;
+        width: 100%;
+        font-size: 0.77em;
+    }
+
+    .information-bell{
+        position: relative;
+        height: 100%;
+        width: 25%;
+    }
+
+    .notification-bell{
+        max-width: 59%;
+        margin-left: 47%;
+        margin-top: 7%;
+    }
+
+    .img-content{
+        position: relative;
+        width: 80%;
+        height: 95%;
+        border-radius: 8%;
+        border-style: solid;
+        border-width: 0.05em;
+        margin-right: 2%;
+        background-color: white;
+        border-color: lightgray;
+    }
+
+    .product-img{
+        max-height: 88%;
+        max-width: 90%;
+        margin-left: 5%;
+        margin-top: 6%;
+    }
+
+    .store-logo{
+        position: relative;
+        height: 18%;
+        width: 90%;
+        background-color: white;
+        border-radius: 9%;
+        border-style: solid;
+        border-width: 0.04em;
+        border-color: lightgray;
+    }
+
+    .img-store{
+        max-width: 90%;
+        margin-left: 5%;
+        max-height: 90%;
+        margin-top: 11%;
+    }
+    
+    .un-price{
+        color: #119BF4;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    .pck-price{
+        color: #119BF4;
+        font-weight: 400;
+    }
+
+    .filter-btn{
+        position: relative;
+        width: 28%;
+        font-size: 0.9em;
+    }
+    
+
+}
