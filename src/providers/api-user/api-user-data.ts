@@ -16,15 +16,12 @@ import { SERVER_API_URL } from '../../app/app.constants';
 @Injectable()
 export class ApiUserProvider {
 
-  constructor(public restApiService:RestApiProvider) {
-    console.log('Hello ApiBeneficiarioProvider Provider');
-  }
+  constructor(public restApiService:RestApiProvider) {}
 
   registerUser(user: UserModel) {
 
     let call: IRestApiCall = {
-      // baseUrl: SERVER_API_URL,
-      baseUrl: "/api",
+      baseUrl: SERVER_API_URL,
       endpoint: "/cadastroUsuarioApp",
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"},
@@ -38,8 +35,7 @@ export class ApiUserProvider {
   loginUser(login: LoginModel) {
 
     let call: IRestApiCall = {
-      // baseUrl: SERVER_API_URL,
-      baseUrl: "/api",
+      baseUrl: SERVER_API_URL,
       endpoint: "/login",
       body: JSON.stringify(login),
       headers: {"Content-Type": "application/json"},
@@ -51,8 +47,7 @@ export class ApiUserProvider {
   getUserData(email: String) {
 
     let call: IRestApiCall = {
-      // baseUrl: SERVER_API_URL,
-      baseUrl: "/api",
+      baseUrl: SERVER_API_URL,
       endpoint: "/getDadosUsuarioApp/"+email,
       body: null,
       headers: {"Content-Type": "application/json"},
@@ -64,8 +59,7 @@ export class ApiUserProvider {
   updateUserData(user: UserModel) {
 
     let call: IRestApiCall = {
-      // baseUrl: SERVER_API_URL,
-      baseUrl: "/api",
+      baseUrl: SERVER_API_URL,
       endpoint: "/updateDadosUsuarioApp",
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"},

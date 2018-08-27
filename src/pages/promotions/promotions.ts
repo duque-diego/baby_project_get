@@ -17,12 +17,12 @@ import { ApiPromotionProvider } from '../../providers/api-promotion/api-promotio
 })
 export class PromotionsPage {
 
+  promotions: any = [];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public apiPromotionProvider: ApiPromotionProvider) {
-
-  }
+    public apiPromotionProvider: ApiPromotionProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PromotionsPage');
@@ -31,12 +31,13 @@ export class PromotionsPage {
       response => {
         console.log('Promotions');
         console.log(response);
+
+        this.promotions = response;
       },
       error => {
         console.log(error);
       }
     )
-
 
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the ProductInfoPage page.
@@ -18,13 +19,28 @@ export class ProductInfoPage {
   overlayHidden: boolean = true;
   tabBarElement: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public inAppBrowser: InAppBrowser) {
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductInfoPage');
   }
+
+  goToStore(url) {
+    url = 'https://www.americanas.com.br/produto/26389555'
+
+    const options: InAppBrowserOptions = {
+      zoom: 'no'
+    };
+
+    // Opening a URL and returning an InAppBrowserObject
+    this.inAppBrowser.create(url, '_blank', options);
+  }
+
   public hideOverlay() {
     this.overlayHidden = true;
   }

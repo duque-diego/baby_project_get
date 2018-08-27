@@ -6,105 +6,36 @@
 -->
 <ion-header color="primary">
 
-  <ion-navbar color="primary">
-    <ion-title>PROMOÇÕES</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+        <ion-title>PROMOÇÕES</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="bg-style" padding>
+    
     <div class="alerts-information-container">
-      <div class="number-alerts">(5) Promoções encontradas</div>
-      <button class="button-text button-login filter-button filter-btn" color="primary" ion-button round medium>FILTRAR</button>
-    </div>
-  
-    <div class="alert-information-container" (click)="goToProductDetail();">
-      <div class="img-content">
-          <img [src]="'assets/imgs/pampers.svg'" class="product-img"/>
-      </div>
-      <div class="information-alert">
-        <div class="store-logo">
-            <img [src]="'assets/imgs/americanas.svg'" class="img-store"/>
-        </div>
-        <div class="information-alert-title">Fraldas Descartáveis Pampers Comfort Sec</div>
-        <div class="information-alert-text">Tamanho P - 50 unidades</div>
-        <div class="un-price">R$ 1,43/un</div>
-        <div class="pck-price">R$ 44,90/pct</div>  
-      </div>
-      <div class="information-bell">
-          <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell"/>
-      </div>
-    </div>
-    <div class="alert-information-container" (click)="goToProductDetail();">
-      <div class="img-content">
-          <img [src]="'assets/imgs/pampers.svg'" class="product-img"/>
-      </div>
-      <div class="information-alert">
-        <div class="store-logo">
-            <img [src]="'assets/imgs/americanas.svg'" class="img-store"/>
-        </div>
-        <div class="information-alert-title">Fraldas Descartáveis Pampers Comfort Sec</div>
-        <div class="information-alert-text">Tamanho P - 50 unidades</div>
-        <div class="un-price">R$ 1,43/un</div>
-        <div class="pck-price">R$ 44,90/pct</div>  
-      </div>
-      <div class="information-bell">
-          <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell"/>
-      </div>
-    </div>
-    <div class="alert-information-container" (click)="goToProductDetail();">
-      <div class="img-content">
-          <img [src]="'assets/imgs/pampers.svg'" class="product-img"/>
-      </div>
-      <div class="information-alert">
-        <div class="store-logo">
-            <img [src]="'assets/imgs/americanas.svg'" class="img-store"/>
-        </div>
-        <div class="information-alert-title">Fraldas Descartáveis Pampers Comfort Sec</div>
-        <div class="information-alert-text">Tamanho P - 50 unidades</div>
-        <div class="un-price">R$ 1,43/un</div>
-        <div class="pck-price">R$ 44,90/pct</div>  
-      </div>
-      <div class="information-bell">
-          <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell"/>
-      </div>
-    </div>
-    <div class="alert-information-container" (click)="goToProductDetail();">
-      <div class="img-content">
-          <img [src]="'assets/imgs/pampers.svg'" class="product-img"/>
-      </div>
-      <div class="information-alert">
-        <div class="store-logo">
-            <img [src]="'assets/imgs/americanas.svg'" class="img-store"/>
-        </div>
-        <div class="information-alert-title">Fraldas Descartáveis Pampers Comfort Sec</div>
-        <div class="information-alert-text">Tamanho P - 50 unidades</div>
-        <div class="un-price">R$ 1,43/un</div>
-        <div class="pck-price">R$ 44,90/pct</div>  
-      </div>
-      <div class="information-bell">
-          <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell"/>
-      </div>
-    </div>
-    <div class="alert-information-container" (click)="goToProductDetail();">
-      <div class="img-content">
-          <img [src]="'assets/imgs/pampers.svg'" class="product-img"/>
-      </div>
-      <div class="information-alert">
-        <div class="store-logo">
-            <img [src]="'assets/imgs/americanas.svg'" class="img-store"/>
-        </div>
-        <div class="information-alert-title">Fraldas Descartáveis Pampers Comfort Sec</div>
-        <div class="information-alert-text">Tamanho P - 50 unidades</div>
-        <div class="un-price">R$ 1,43/un</div>
-        <div class="pck-price">R$ 44,90/pct</div>  
-      </div>
-      <div class="information-bell">
-          <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell"/>
-      </div>
+        <div class="number-alerts">({{promotions.length}}) Promoções encontradas</div>
+        <button class="button-text button-login filter-button filter-btn" color="primary" ion-button round medium>FILTRAR</button>
     </div>
 
-    
-    
+    <div class="alert-information-container" *ngFor="let item of promotions" (click)="goToProductDetail(item);">
+        <div class="img-content">
+            <img [src]="item.fralda.imageLink" class="product-img" />
+        </div>
+        <div class="information-alert">
+            <div class="store-logo">
+                <img [src]="item.loja.imageLink" class="img-store" />
+            </div>
+            <div class="information-alert-title">{{item.fralda.nome}}</div>
+            <div class="information-alert-text">{{item.tamanho.nome}}</div>
+            <div class="un-price">{{item.unitPrice}}</div>
+            <div class="pck-price">{{item.packagePrice}}</div>
+        </div>
+        <div class="information-bell">
+            <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell" />
+        </div>
+    </div>
+
 </ion-content>

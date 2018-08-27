@@ -21,6 +21,7 @@ import { SasMaskPipe } from "../pipes/sas-mask/sas-mask";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { RestApiProvider } from '../helpers/rest-api.provider';
 import { ApiUserProvider } from '../providers/api-user/api-user-data';
 import { ApiPromotionProvider } from '../providers/api-promotion/api-promotion';
@@ -81,6 +82,7 @@ import { IonicStorageModule } from '@ionic/storage';
     RestApiProvider,
     ApiUserProvider,
     ApiPromotionProvider,
+    InAppBrowser,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

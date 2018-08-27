@@ -3,6 +3,7 @@ import { RequestMethod } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { RestApiProvider, IRestApiCall } from '../../helpers/rest-api.provider';
+import { SERVER_API_URL } from '../../app/app.constants';
 
 /*
   Generated class for the ApiBeneficiarioProvider provider.
@@ -18,7 +19,7 @@ export class ApiPromotionProvider {
 
   getPromotions() {
     let call: IRestApiCall = {
-      baseUrl: "/api",
+      baseUrl: SERVER_API_URL,
       endpoint: "/api/promocoes",
       body: null,
       headers: {"Content-Type": "application/json"},
