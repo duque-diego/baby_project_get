@@ -16,6 +16,7 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 })
 export class ProductInfoPage {
 
+  productInfo: any = {};
   overlayHidden: boolean = true;
   tabBarElement: any;
 
@@ -23,22 +24,23 @@ export class ProductInfoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public inAppBrowser: InAppBrowser) {
+
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    this.productInfo = navParams.get('productInfo');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductInfoPage');
   }
 
-  goToStore(url) {
-    url = 'https://www.americanas.com.br/produto/26389555'
-
+  goToStore() {
     const options: InAppBrowserOptions = {
       zoom: 'no'
     };
 
-    // Opening a URL and returning an InAppBrowserObject
-    this.inAppBrowser.create(url, '_blank', options);
+    if (this.productInfo.promotionLink) {
+      this.inAppBrowser.create(this.productInfo.promotionLink, '_blank', options);
+    }
   }
 
   public hideOverlay() {

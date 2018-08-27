@@ -38,11 +38,10 @@ export class PromotionsPage {
         console.log(error);
       }
     )
-
   }
 
-  private goToProductDetail(){
-    this.navCtrl.push(ProductInfoPage);
+  private goToProductDetail(item){
+    this.navCtrl.push(ProductInfoPage, { productInfo: item });
   }
 
 }

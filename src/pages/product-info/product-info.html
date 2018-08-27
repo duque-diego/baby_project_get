@@ -7,7 +7,7 @@
 <ion-header color="primary">
 
   <ion-navbar color="primary">
-    <ion-title>PAMPERS COMFORT SEC</ion-title>
+    <ion-title>{{productInfo.fralda.nome}}</ion-title>
     <ion-buttons right>
       <button (click)="showOverlay()" ion-button icon-only><ion-icon name="add-circle"></ion-icon></button>
     </ion-buttons>
@@ -15,40 +15,41 @@
 
 </ion-header>
 
-
 <ion-content class="bg-style">
 
-    <div class="alert-information-container">
-        <div class="img-content">
-            <img [src]="'assets/imgs/pampers.svg'" class="product-img"/>
-        </div>
+  <div class="alert-information-container">
+    <div class="img-content">
+      <img [src]="productInfo.fralda.imageLink" class="product-img" />
     </div>
+  </div>
 
-    <div class="alerts-information-container">
-      <div class="number-alerts"><ion-icon name="share"></ion-icon> Compartilhar</div>
-      <div class="number-alerts">Alerta de preço <ion-icon name="notifications"></ion-icon></div>
+  <div class="alerts-information-container">
+    <div class="number-alerts">
+      <ion-icon name="share"></ion-icon> Compartilhar
     </div>
+    <div class="number-alerts">Alerta de preço
+      <ion-icon name="notifications"></ion-icon>
+    </div>
+  </div>
 
-    <div class="alert-information-container information-product">
-      <div class="information-alert">
-        <div class="store-logo">
-            <img [src]="'assets/imgs/americanas.svg'" class="img-store"/>
-        </div> 
-      </div>
-      <div class="information-alert">
-          <div class="information-alert-title">Fraldas Descartáveis Pampers Comfort Sec</div>
-          <div class="information-alert-text">Tamanho P - 50 unidades</div>
-          <div class="un-price">R$ 1,43/un</div>
-          <div class="pck-price">R$ 44,90/pct</div> 
+  <div class="alert-information-container information-product">
+    <div class="information-alert">
+      <div class="store-logo">
+        <img [src]="productInfo.loja.imageLink" class="img-store" />
       </div>
     </div>
-
-    <div class="disccount-text">
-      <div class="inner-disccount-text">PEGUE 20% DE DESCONTO COM O CUPOM</div>
-      
-      <!-- <button class="button-text button-login filter-button filter-btn" color="primary" ion-button round medium (click)='loginEmail();'>FILTRAR</button> -->
+    <div class="information-alert">
+      <div class="information-alert-title">{{productInfo.fralda.nome}}</div>
+      <div class="information-alert-text">{{productInfo.tamanho.nome}}</div>
+      <div class="un-price">{{productInfo.unitPrice}}</div>
+      <div class="pck-price">{{productInfo.packagePrice}}</div>
     </div>
-    <button class="outline-button" color="primary" ion-button round medium outline>PROMOCAODEFRALDAS20</button>
-    <button class="outline-button" color="primary" ion-button round medium (click)="goToStore(item)">COMPRAR</button>
+  </div>
+
+  <div class="disccount-text">
+    <div class="inner-disccount-text">PEGUE 20% DE DESCONTO COM O CUPOM</div>
+  </div>
+  <button class="outline-button" color="primary" ion-button round medium outline>PROMOCAODEFRALDAS20</button>
+  <button class="outline-button" color="primary" ion-button round medium (click)="goToStore()">COMPRAR</button>
 
 </ion-content>
