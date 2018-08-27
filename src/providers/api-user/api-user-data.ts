@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { RestApiProvider, IRestApiCall,  } from '../../helpers/rest-api.provider';
 import { UserModel } from '../../models/user-model';
 import { LoginModel } from '../../models/login-model';
+import { SERVER_API_URL } from '../../app/app.constants';
 
 /*
   Generated class for the ApiBeneficiarioProvider provider.
@@ -21,17 +22,15 @@ export class ApiUserProvider {
 
   registerUser(user: UserModel) {
 
-
-    //https://agendamentoreverso-dot-sas-odonto-mobile-dev.appspot.com/
-    //https://get-fraldas.appspot.com"
     let call: IRestApiCall = {
-      baseUrl: "https://get-fraldas.appspot.com",
-      //baseUrl: "/api",
+      // baseUrl: SERVER_API_URL,
+      baseUrl: "/api",
       endpoint: "/cadastroUsuarioApp",
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"},
       method: RequestMethod.Post
     }
+
     return this.restApiService.post(call)
       .map((data: any) => converterJsonParaUser(data));
   }
@@ -39,8 +38,8 @@ export class ApiUserProvider {
   loginUser(login: LoginModel) {
 
     let call: IRestApiCall = {
-      baseUrl: "https://get-fraldas.appspot.com",
-      //baseUrl: "/api",
+      // baseUrl: SERVER_API_URL,
+      baseUrl: "/api",
       endpoint: "/login",
       body: JSON.stringify(login),
       headers: {"Content-Type": "application/json"},
@@ -52,8 +51,8 @@ export class ApiUserProvider {
   getUserData(email: String) {
 
     let call: IRestApiCall = {
-      baseUrl: "https://get-fraldas.appspot.com",
-      //baseUrl: "/api",
+      // baseUrl: SERVER_API_URL,
+      baseUrl: "/api",
       endpoint: "/getDadosUsuarioApp/"+email,
       body: null,
       headers: {"Content-Type": "application/json"},
@@ -65,8 +64,8 @@ export class ApiUserProvider {
   updateUserData(user: UserModel) {
 
     let call: IRestApiCall = {
-      baseUrl: "https://get-fraldas.appspot.com",
-      //baseUrl: "/api",
+      // baseUrl: SERVER_API_URL,
+      baseUrl: "/api",
       endpoint: "/updateDadosUsuarioApp",
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"},

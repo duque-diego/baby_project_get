@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
-import { HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -21,9 +21,9 @@ import { SasMaskPipe } from "../pipes/sas-mask/sas-mask";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
-import { Profile } from 'selenium-webdriver/firefox';
 import { RestApiProvider } from '../helpers/rest-api.provider';
 import { ApiUserProvider } from '../providers/api-user/api-user-data';
+import { ApiPromotionProvider } from '../providers/api-promotion/api-promotion';
 import { SasMaskDirective } from '../directives/sas-mask/sas-mask';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -80,6 +80,7 @@ import { IonicStorageModule } from '@ionic/storage';
     Facebook,
     RestApiProvider,
     ApiUserProvider,
+    ApiPromotionProvider,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

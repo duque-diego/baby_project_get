@@ -112,16 +112,22 @@ export class SignUpPage {
 
       this.apiUserProvider
                   .registerUser(user)
-                  .subscribe(response => {
-                    loading.dismiss();
-                    this.storage.set('userData', response)
-                    .then(
-                      () => console.log('Stored item!'),
-                      error => console.error('Error storing item', error)
-                    );
-                    this.presentConfirm();
-                    //user = response
-                  });
+                  .subscribe(
+                    response => {
+                      loading.dismiss();
+                      this.storage.set('userData', response)
+                      .then(
+                        () => console.log('Stored item!'),
+                        error => console.error('Error storing item', error)
+                      );
+                      this.presentConfirm();
+                      //user = response
+                    },
+                    error => {
+                      loading.dismiss();
+                      //TODO: feedback de erro
+                    }
+                  );
     }
   }
 
