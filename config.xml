@@ -93,4 +93,5 @@
     <allow-navigation href="http://192.168.0.101:8100" />
     <plugin name="cordova-plugin-nativestorage" spec="~2.3.2" />
     <allow-navigation href="http://192.168.1.36:8100" sessionid="cd30cf03" />
+    <plugin name="onesignal-cordova-plugin" spec="~2.4.3" />
 </widget>

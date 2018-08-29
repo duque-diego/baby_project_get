@@ -27,6 +27,7 @@ import { ApiUserProvider } from '../providers/api-user/api-user-data';
 import { ApiPromotionProvider } from '../providers/api-promotion/api-promotion';
 import { SasMaskDirective } from '../directives/sas-mask/sas-mask';
 import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ApiUserProvider,
     ApiPromotionProvider,
     InAppBrowser,
+    OneSignal,
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
