@@ -38,8 +38,8 @@ export class ProductInfoPage {
       zoom: 'no'
     };
 
-    if (this.productInfo.promotionLink) {
-      this.inAppBrowser.create(this.productInfo.promotionLink, '_blank', options);
+    if (this.productInfo.promoLink) {
+      this.inAppBrowser.create(this.productInfo.promoLink, '_blank', options);
     }
   }
 
