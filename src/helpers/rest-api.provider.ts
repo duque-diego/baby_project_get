@@ -31,6 +31,8 @@ export class RestApiProvider {
       return this.http.post(endpoint, call.body, options);
     } else if (call.method === RequestMethod.Patch) {
       return this.http.patch(endpoint, call.body, options);
+    } else if (call.method === RequestMethod.Put) {
+      return this.http.put(endpoint, call.body, options);
     }
   }
 
@@ -48,8 +50,11 @@ export class RestApiProvider {
     return this.http.post(endpoint, call.body, options);
   }
 
-  public put(endpoint: string, body: any, reqOpts?: any) {
-    return this.http.put(endpoint, body, reqOpts);
+  public put(call: IRestApiCall) {
+    const endpoint = this.buildRestEndpoint(call);
+    const options = this.buildRequestOptions(call);
+
+    return this.http.put(endpoint, call.body, options);
   }
 
   public delete(endpoint: string, reqOpts?: any) {

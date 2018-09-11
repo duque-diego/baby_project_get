@@ -25,6 +25,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { RestApiProvider } from '../helpers/rest-api.provider';
 import { ApiUserProvider } from '../providers/api-user/api-user-data';
 import { ApiPromotionProvider } from '../providers/api-promotion/api-promotion';
+import { ApiPreferenceProvider } from '../providers/api-preference/api-preference-data';
 import { SasMaskDirective } from '../directives/sas-mask/sas-mask';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
@@ -83,6 +84,7 @@ import { OneSignal } from '@ionic-native/onesignal';
     RestApiProvider,
     ApiUserProvider,
     ApiPromotionProvider,
+    ApiPreferenceProvider,
     InAppBrowser,
     OneSignal,
     
