@@ -28,11 +28,17 @@ page-my-baby {
         margin-left: 2%;
     }
 
-    .checkbox-label{
-        margin-left: 18%;
-        margin-top: -13%;
-        color: #119BF4;
+    .check-marca {
+        vertical-align: middle;
     }
+
+    .checkbox-label{
+        color: #119BF4;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+
     .round-button-div{
         border-radius: 50%;
         width: 28px;
@@ -86,6 +92,7 @@ page-my-baby {
         max-width: 60%;
         margin-bottom: 1%;
         margin-left: 2%;
+        vertical-align: middle;
     }
 
     .my-baby-remember-me{

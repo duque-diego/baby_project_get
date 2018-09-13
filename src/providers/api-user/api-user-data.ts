@@ -20,18 +20,6 @@ export class ApiUserProvider {
 
   registerUser(user: UserModel) {
 
-    // let call: IRestApiCall = {
-    //   baseUrl: SERVER_API_URL,
-    //   endpoint: "/cadastroUsuarioApp",
-    //   body: JSON.stringify(user),
-    //   headers: {"Content-Type": "application/json"},
-    //   method: RequestMethod.Post
-    // }
-
-    // return this.restApiService.post(call)
-    //   .map((data: any) => converterJsonParaUser(data));
-
-
     let call: IRestApiCall = {
       baseUrl: SERVER_API_URL,
       endpoint: "/api/usuario",
@@ -61,11 +49,13 @@ export class ApiUserProvider {
 
     let call: IRestApiCall = {
       baseUrl: SERVER_API_URL,
-      endpoint: "/getDadosUsuarioApp/"+email,
+      endpoint: "/api/usuario",
       body: null,
       headers: {"Content-Type": "application/json"},
+      queryParams: { email: email },
       method: RequestMethod.Get
     }
+
     return this.restApiService.get(call);
   }
 
@@ -73,12 +63,12 @@ export class ApiUserProvider {
 
     let call: IRestApiCall = {
       baseUrl: SERVER_API_URL,
-      endpoint: "/updateDadosUsuarioApp",
+      endpoint: "/api/usuario",
       body: JSON.stringify(user),
       headers: {"Content-Type": "application/json"},
-      method: RequestMethod.Post
+      method: RequestMethod.Put
     }
-    return this.restApiService.post(call);
+    return this.restApiService.put(call);
   }
 
 }

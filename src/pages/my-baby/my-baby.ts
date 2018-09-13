@@ -28,6 +28,7 @@ export class MyBabyPage {
   marcas: FraldaModel[] = [];
   tamanhos: TamanhoModel[] = [];
   lojas: LojasModel[] = [];
+  userData: any;
 
   constructor(
     public navCtrl: NavController,
@@ -40,60 +41,43 @@ export class MyBabyPage {
   ) { }
 
   ionViewDidLoad() {
-    // this.storage.get('userData')
-    //   .then(
-    //     data => {
-
-    //       if (data.preferencias) {
-    //         this.preferences = data.preferencias;
-    //         this.fraldas = data.preferencias.fraldas;
-    //         this.tamanhos = data.preferencias.tamanhos;
-    //         this.lojas = data.preferencias.lojas;
-    //         console.log(data);
-    //       } else {
-    //         this.fraldas.push(new FraldaModel(1, "Pampers", false));
-    //         this.fraldas.push(new FraldaModel(2, "Pom Pom", false));
-    //         this.fraldas.push(new FraldaModel(3, "Huggies", false));
-    //         this.fraldas.push(new FraldaModel(4, "Cremer", false));
-    //         this.fraldas.push(new FraldaModel(5, "Capricho", false));
-    //         this.fraldas.push(new FraldaModel(6, "Personal", false));
-    //         this.fraldas.push(new FraldaModel(7, "MammyPoko", false));
-    //         this.fraldas.push(new FraldaModel(8, "Johnson's Baby", false));
-
-    //         this.lojas.push(new LojasModel(1, "Americanas", false));
-    //         this.lojas.push(new LojasModel(2, "Carrefour", false));
-    //         this.lojas.push(new LojasModel(3, "Onofre", false));
-    //         this.lojas.push(new LojasModel(4, "Drogasil", false));
-    //         this.lojas.push(new LojasModel(5, "Bebê Store", false));
-    //         this.lojas.push(new LojasModel(6, "Wallmart", false));
-    //         this.lojas.push(new LojasModel(7, "Onofre", false));
-    //         this.lojas.push(new LojasModel(8, "Magazine Luiza", false));
-
-    //         this.tamanhos.push(new TamanhoModel(1, "RN", false));
-    //         this.tamanhos.push(new TamanhoModel(2, "P", false));
-    //         this.tamanhos.push(new TamanhoModel(3, "M", false));
-    //         this.tamanhos.push(new TamanhoModel(4, "G", false));
-    //         this.tamanhos.push(new TamanhoModel(5, "XG", false));
-    //         this.tamanhos.push(new TamanhoModel(6, "XXG", false));
-
-    //       }
-    //     },
-    //     error => console.error(error)
-    //   );
-
     this.apiPreferenceProvider.getAllPreferences().subscribe(
       res => {
-        console.log(res);
-
-        this.marcas = res['marcas'];
-        this.tamanhos = res['tamanhos'];
-        this.lojas = res['lojas'];
+        this.getUserData(res);
       },
       err => {
         console.log(err);
         this.lojas = [];
       }
     );
+  }
+
+  public getUserData(allPreferences) {
+    this.storage.get('userData')
+    .then(
+      data => {
+        this.userData = data;
+        this.marcas = this.formatPreferenceArray(data['marcas'], allPreferences['marcas']);
+        this.tamanhos = this.formatPreferenceArray(data['tamanhos'], allPreferences['tamanhos']);
+        this.lojas = this.formatPreferenceArray(data['lojas'], allPreferences['lojas']);
+      },
+      error => console.error(error)
+    );
+  }
+
+  public formatPreferenceArray(savedPref: [], allPref: []) {
+    for (let i = 0; i < allPref.length; i++) {
+      allPref[i]['checada'] = false;
+
+      for (let j = 0; j < savedPref.length; j++) {
+        if (savedPref[j]['id'] == allPref[i]['id']) {
+          allPref[i]['checada'] = true;
+          break;
+        }
+      }
+    }
+
+    return allPref;
   }
 
   public hideOverlay() {
@@ -112,12 +96,10 @@ export class MyBabyPage {
 
   public setFraldaChecked(event, index: number) {
     this.marcas[index].checada = event.checked;
-    console.log(this.marcas[index]);
   }
 
   public setLojaChecked(event, index: number) {
     this.lojas[index].checada = event.checked;
-    console.log(this.lojas[index]);
   }
 
   public selecionaTamanho(index: number) {
@@ -129,36 +111,26 @@ export class MyBabyPage {
   }
 
   public sendPreferences() {
-    this.preferences.lojas = this.lojas;
-    this.preferences.tamanhos = this.tamanhos;
-    this.preferences.fraldas = this.marcas;
-    console.log(this.preferences);
-
-    //this.storage.set("preferences", this.preferences);
-
-
     let loading = this.loadingCtrl.create({
       content: 'Realizando cadastro...'
     });
 
     loading.present();
-    this.storage.get('userData')
-      .then(
-        data => {
-          data.preferencias = this.preferences;
-          this.apiUserProvider
-            .updateUserData(data)
-            .subscribe(response => {
-              this.storage.set("userData", response);
-              loading.dismiss();
-              this.presentConfirm();
-            }, error => {
-              loading.dismiss();
-            })
-        },
-        error => console.error(error)
-      );
 
+    this.userData.marcas = this.marcas.filter(item => item.checada);
+    this.userData.tamanhos = this.tamanhos.filter(item => item.checada);
+    this.userData.lojas = this.lojas.filter(item => item.checada);
+
+    console.log(this.userData);
+
+    this.apiUserProvider.updateUserData(this.userData).subscribe(
+      response => {
+        this.storage.set("userData", response);
+        loading.dismiss();
+        this.presentConfirm();
+      }, error => {
+        loading.dismiss();
+      });
   }
 
   private presentConfirm() {

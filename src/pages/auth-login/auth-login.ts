@@ -80,6 +80,9 @@ export class AuthLoginPage {
                     this.apiUserProvider.getUserData(this.loginValue)
                         .subscribe(response => {
                           loading.dismiss();
+
+                          console.log("DADOS DO USUARIO", response);
+
                           this.navCtrl.setRoot(TutorialPage, {userData : response});
                           this.storage.set("userData", response); 
                         }, error => {

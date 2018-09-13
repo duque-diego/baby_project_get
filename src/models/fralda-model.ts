@@ -13,11 +13,10 @@
       checada: boolean;
 
       constructor(
-
         id: number,
-        nome: string, 
+        nome: string,
         checada: boolean) {
-        this.id = id;  
+        this.id = id;
         this.nome = nome;
         this.checada = checada;
       }
