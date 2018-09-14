@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ProductInfoPage } from '../product-info/product-info';
 import { ApiPromotionProvider } from '../../providers/api-promotion/api-promotion';
 
@@ -18,24 +18,30 @@ import { ApiPromotionProvider } from '../../providers/api-promotion/api-promotio
 export class PromotionsPage {
 
   promotions: any = [];
+  loading: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public apiPromotionProvider: ApiPromotionProvider) {}
+    public apiPromotionProvider: ApiPromotionProvider,
+    public loadingCtrl: LoadingController) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PromotionsPage');
+    this.loading = this.loadingCtrl.create({
+      content: 'Buscando promoções'
+    });
+
+    this.loading.present();
 
     this.apiPromotionProvider.getPromotions().subscribe(
       response => {
-        console.log('Promotions');
         console.log(response);
-
         this.promotions = response;
+        this.loading.dismiss();
       },
       error => {
         console.log(error);
+        this.loading.dismiss();
       }
     )
   }

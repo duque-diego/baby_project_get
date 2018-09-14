@@ -3,7 +3,7 @@
     <name>Promo Fraldas</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.38:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -94,5 +94,6 @@
     <plugin name="cordova-plugin-nativestorage" spec="~2.3.2" />
     <allow-navigation href="http://192.168.1.36:8100" sessionid="cd30cf03" />
     <plugin name="onesignal-cordova-plugin" spec="~2.4.3" />
+    <allow-navigation href="http://192.168.1.38:8100" sessionid="9481245b" />
     <engine name="browser" spec="5.0.4" />
 </widget>

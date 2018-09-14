@@ -28,7 +28,9 @@ export class MyBabyPage {
   marcas: FraldaModel[] = [];
   tamanhos: TamanhoModel[] = [];
   lojas: LojasModel[] = [];
+  bebe: any = {};
   userData: any;
+  loading: any;
 
   constructor(
     public navCtrl: NavController,
@@ -38,9 +40,15 @@ export class MyBabyPage {
     public apiPreferenceProvider: ApiPreferenceProvider,
     public alertController: AlertController,
     public loadingCtrl: LoadingController,
-  ) { }
+  ) {}
 
   ionViewDidLoad() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Buscando preferências'
+    });
+
+    this.loading.present();
+
     this.apiPreferenceProvider.getAllPreferences().subscribe(
       res => {
         this.getUserData(res);
@@ -48,36 +56,70 @@ export class MyBabyPage {
       err => {
         console.log(err);
         this.lojas = [];
+        this.loading.dismiss();
       }
     );
   }
 
   public getUserData(allPreferences) {
     this.storage.get('userData')
-    .then(
-      data => {
-        this.userData = data;
-        this.marcas = this.formatPreferenceArray(data['marcas'], allPreferences['marcas']);
-        this.tamanhos = this.formatPreferenceArray(data['tamanhos'], allPreferences['tamanhos']);
-        this.lojas = this.formatPreferenceArray(data['lojas'], allPreferences['lojas']);
-      },
-      error => console.error(error)
-    );
+      .then(
+        data => {
+          this.userData = data;
+          this.marcas = this.formatPreferenceArray(data['marcas'], allPreferences['marcas']);
+          this.tamanhos = this.formatPreferenceArray(data['tamanhos'], allPreferences['tamanhos']);
+          this.lojas = this.formatPreferenceArray(data['lojas'], allPreferences['lojas']);
+          this.bebe = this.formatBebeData();
+      
+          this.loading.dismiss();
+        },
+        error => {
+          console.error(error);
+          this.loading.dismiss();
+        }
+      );
   }
 
-  public formatPreferenceArray(savedPref: [], allPref: []) {
-    for (let i = 0; i < allPref.length; i++) {
-      allPref[i]['checada'] = false;
+  public formatPreferenceArray(savedPref: any[], allPref: any[]) {
+    if (savedPref && allPref) {
+      for (let i = 0; i < allPref.length; i++) {
+        allPref[i]['checada'] = false;
 
-      for (let j = 0; j < savedPref.length; j++) {
-        if (savedPref[j]['id'] == allPref[i]['id']) {
-          allPref[i]['checada'] = true;
-          break;
+        for (let j = 0; j < savedPref.length; j++) {
+          if (savedPref[j]['id'] == allPref[i]['id']) {
+            allPref[i]['checada'] = true;
+            break;
+          }
         }
       }
     }
 
     return allPref;
+  }
+
+  public formatBebeData() {
+    let bebeFormatted: any = {};
+
+    if (this.userData && this.userData.bebes && this.userData.bebes.length > 0) {
+      bebeFormatted = this.userData.bebes[0];
+      bebeFormatted.dataNascimento = this.formatDate(new Date(this.userData.bebes[0].dataNascimento));
+    }
+
+    return bebeFormatted;
+  }
+
+  public formatDate(dateIn: Date) {
+    let dateStr = '';
+    let dayStr;
+    let monthStr;
+
+    if (dateIn) {
+      dayStr = dateIn.getDate() < 10 ? '0' + dateIn.getDate() : dateIn.getDate();
+      monthStr = dateIn.getMonth() + 1 < 10 ? `0${dateIn.getMonth() + 1}` : dateIn.getMonth() + 1;
+      dateStr = `${dayStr}/${monthStr}/${dateIn.getFullYear()}`
+    }
+
+    return dateStr;
   }
 
   public hideOverlay() {
@@ -111,25 +153,33 @@ export class MyBabyPage {
   }
 
   public sendPreferences() {
-    let loading = this.loadingCtrl.create({
+    this.loading = this.loadingCtrl.create({
       content: 'Realizando cadastro...'
     });
 
-    loading.present();
+    this.loading.present();
 
     this.userData.marcas = this.marcas.filter(item => item.checada);
     this.userData.tamanhos = this.tamanhos.filter(item => item.checada);
     this.userData.lojas = this.lojas.filter(item => item.checada);
 
+    let bebeFormatted = Object.assign({}, this.bebe);
+    let dateSplit = bebeFormatted.dataNascimento.split('/');
+    bebeFormatted.dataNascimento = new Date(dateSplit[2], dateSplit[1] - 1, dateSplit[0])
+
+    this.userData.bebes = [];
+    this.userData.bebes[0] = bebeFormatted;
+
+    console.log('dados para alterar')
     console.log(this.userData);
 
     this.apiUserProvider.updateUserData(this.userData).subscribe(
       response => {
         this.storage.set("userData", response);
-        loading.dismiss();
+        this.loading.dismiss();
         this.presentConfirm();
       }, error => {
-        loading.dismiss();
+        this.loading.dismiss();
       });
   }
 
