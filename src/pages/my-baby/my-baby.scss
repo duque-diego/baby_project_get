@@ -102,4 +102,10 @@ page-my-baby {
         color: #119BF4;
     }
 
+    ion-datetime {
+        .item-cover {
+            height: auto !important;
+        }
+    }
+    
 }

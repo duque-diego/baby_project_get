@@ -26,16 +26,15 @@
 
   <div class="input-container-my-baby">
     <div class="input-label">Data de Nascimento</div>
-    <input type="text" class="custom-input" [(ngModel)]="bebe.dataNascimento">
+    <ion-datetime class="custom-input" displayFormat="DD/MM/YYYY" [(ngModel)]="bebe.dataNascimento"></ion-datetime>
+
   </div>
 
   <div class="input-container-my-baby">
     <div class="input-label">Peso</div>
-    <input type="text" class="custom-input" [(ngModel)]="bebe.peso">
+    <input type="number" class="custom-input" [(ngModel)]="bebe.peso">
   </div>
-  <!-- <div text-center class="add-baby-text">Adicionar bebê
-    <img [src]="'assets/imgs/plus.svg'" class="plus-img" />
-  </div> -->
+  
   <div text-center class="title-text">FRALDAS</div>
 
   <div class="input-label">Marcas Favoritas</div>

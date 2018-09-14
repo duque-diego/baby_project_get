@@ -94,6 +94,7 @@
     <plugin name="cordova-plugin-nativestorage" spec="~2.3.2" />
     <allow-navigation href="http://192.168.1.36:8100" sessionid="cd30cf03" />
     <plugin name="onesignal-cordova-plugin" spec="~2.4.3" />
-    <allow-navigation href="http://192.168.1.38:8100" sessionid="9481245b" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <allow-navigation href="http://192.168.1.38:8100" sessionid="c3dd5f5d" />
     <engine name="browser" spec="5.0.4" />
 </widget>

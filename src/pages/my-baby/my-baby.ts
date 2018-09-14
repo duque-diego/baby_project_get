@@ -102,24 +102,10 @@ export class MyBabyPage {
 
     if (this.userData && this.userData.bebes && this.userData.bebes.length > 0) {
       bebeFormatted = this.userData.bebes[0];
-      bebeFormatted.dataNascimento = this.formatDate(new Date(this.userData.bebes[0].dataNascimento));
+      bebeFormatted.dataNascimento = new Date(bebeFormatted.dataNascimento).toISOString();
     }
 
     return bebeFormatted;
-  }
-
-  public formatDate(dateIn: Date) {
-    let dateStr = '';
-    let dayStr;
-    let monthStr;
-
-    if (dateIn) {
-      dayStr = dateIn.getDate() < 10 ? '0' + dateIn.getDate() : dateIn.getDate();
-      monthStr = dateIn.getMonth() + 1 < 10 ? `0${dateIn.getMonth() + 1}` : dateIn.getMonth() + 1;
-      dateStr = `${dayStr}/${monthStr}/${dateIn.getFullYear()}`
-    }
-
-    return dateStr;
   }
 
   public hideOverlay() {
@@ -164,14 +150,8 @@ export class MyBabyPage {
     this.userData.lojas = this.lojas.filter(item => item.checada);
 
     let bebeFormatted = Object.assign({}, this.bebe);
-    let dateSplit = bebeFormatted.dataNascimento.split('/');
-    bebeFormatted.dataNascimento = new Date(dateSplit[2], dateSplit[1] - 1, dateSplit[0])
-
     this.userData.bebes = [];
     this.userData.bebes[0] = bebeFormatted;
-
-    console.log('dados para alterar')
-    console.log(this.userData);
 
     this.apiUserProvider.updateUserData(this.userData).subscribe(
       response => {

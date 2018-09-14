@@ -22,6 +22,7 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/core": "4.9.1",
+    "@ionic-native/date-picker": "^4.12.2",
     "@ionic-native/facebook": "^4.9.1",
     "@ionic-native/in-app-browser": "^4.12.0",
     "@ionic-native/native-storage": "^4.11.0",
@@ -31,20 +32,21 @@
     "@ionic/pro": "1.0.20",
     "@ionic/storage": "^2.1.3",
     "cordova-browser": "5.0.4",
+    "cordova-plugin-datepicker": "^0.9.3",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-facebook4": "1.7.4",
     "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-ionic-keyboard": "2.0.5",
+    "cordova-plugin-ionic-webview": "1.1.19",
+    "cordova-plugin-nativestorage": "~2.3.2",
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-whitelist": "1.3.3",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
+    "onesignal-cordova-plugin": "~2.4.3",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.26",
-    "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-ionic-webview": "1.1.19",
-    "cordova-plugin-ionic-keyboard": "2.0.5",
-    "cordova-plugin-facebook4": "1.7.4",
-    "cordova-plugin-nativestorage": "~2.3.2",
-    "onesignal-cordova-plugin": "~2.4.3"
+    "zone.js": "0.8.26"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
@@ -65,7 +67,8 @@
         "APP_NAME": "“dev_baby_project”"
       },
       "cordova-plugin-nativestorage": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-datepicker": {}
     },
     "platforms": [
       "browser"
