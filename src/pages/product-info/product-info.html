@@ -7,7 +7,7 @@
 <ion-header color="primary">
 
   <ion-navbar color="primary">
-    <ion-title>{{productInfo.modelo.nome}}</ion-title>
+    <ion-title>{{productInfo.fralda.nome}}</ion-title>
     <ion-buttons right>
       <button (click)="showOverlay()" ion-button icon-only><ion-icon name="add-circle"></ion-icon></button>
     </ion-buttons>
@@ -19,7 +19,7 @@
 
   <div class="alert-information-container">
     <div class="img-content">
-      <img [src]="productInfo.modelo.imageLink" class="product-img" />
+      <img [src]="productInfo.fralda.imageLink" class="product-img" />
     </div>
   </div>
 
