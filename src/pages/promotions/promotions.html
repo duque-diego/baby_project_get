@@ -22,16 +22,16 @@
 
     <div class="alert-information-container" *ngFor="let item of promotions" (click)="goToProductDetail(item);">
         <div class="img-content">
-            <img [src]="item.modelo.imageLink" class="product-img" />
+            <img [src]="item.fralda.imageLink" class="product-img" />
         </div>
         <div class="information-alert">
             <div class="store-logo">
                 <img [src]="item.loja.imageLink" class="img-store" />
             </div>
-            <div class="information-alert-title">{{item.modelo.nome}}</div>
+            <div class="information-alert-title">{{item.fralda.nome}}</div>
             <div class="information-alert-text">{{item.tamanho.nome}}</div>
-            <div class="un-price">{{item.valorUnidade}}</div>
-            <div class="pck-price">{{item.valorPacote}}</div>
+            <div class="un-price">{{item.unitPrice}}</div>
+            <div class="pck-price">{{item.packagePrice}}</div>
         </div>
         <div class="information-bell">
             <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell" />

@@ -20,7 +20,7 @@ export class ApiPromotionProvider {
   getPromotions() {
     let call: IRestApiCall = {
       baseUrl: SERVER_API_URL,
-      endpoint: "/api/promocoes",
+      endpoint: "/api/promocoes-app",
       body: null,
       headers: {"Content-Type": "application/json"},
       method: RequestMethod.Get
