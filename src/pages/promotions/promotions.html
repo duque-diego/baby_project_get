@@ -17,7 +17,7 @@
 
     <div class="alerts-information-container">
         <div class="number-alerts">({{promotions.length}}) Promoções encontradas</div>
-        <button class="button-text button-login filter-button filter-btn" color="primary" ion-button round medium>FILTRAR</button>
+        <button class="button-text button-login filter-button filter-btn" color="primary" ion-button round medium (click)="goToSetup()">FILTRAR</button>
     </div>
 
     <div class="alert-information-container" *ngFor="let item of promotions" (click)="goToProductDetail(item);">
@@ -33,9 +33,9 @@
             <div class="un-price">{{item.unitPrice}}</div>
             <div class="pck-price">{{item.packagePrice}}</div>
         </div>
-        <div class="information-bell">
+        <!-- <div class="information-bell">
             <img [src]="'assets/imgs/notification_bell.svg'" class="notification-bell" />
-        </div>
+        </div> -->
     </div>
 
 </ion-content>

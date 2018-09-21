@@ -81,7 +81,7 @@
     <div class="input-label">Quanto você deseja pagar pro fralda? É com base nesse valor que iremos listar e
       te manter informado sobre as melhores promoções.
     </div>
-    <input type="text" class="custom-input" [(ngModel)]="preferences.price">
+    <input type="text" class="custom-input" placeholder="(R$) 1,00" [brmasker]="{money: true, decimal: 2}" value="" [(ngModel)]="preferences.price" >
   </div>
   <ion-grid>
     <ion-row>
