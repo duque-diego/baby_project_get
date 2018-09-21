@@ -29,6 +29,7 @@ import { ApiPreferenceProvider } from '../providers/api-preference/api-preferenc
 import { SasMaskDirective } from '../directives/sas-mask/sas-mask';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { OneSignal } from '@ionic-native/onesignal';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    BrMaskerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +82,7 @@ import { OneSignal } from '@ionic-native/onesignal';
   providers: [
     StatusBar,
     SplashScreen,
-    Facebook,
+    //Facebook,
     RestApiProvider,
     ApiUserProvider,
     ApiPromotionProvider,

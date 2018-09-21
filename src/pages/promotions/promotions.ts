@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { Storage } from '@ionic/storage';
 import { ProductInfoPage } from '../product-info/product-info';
 import { ApiPromotionProvider } from '../../providers/api-promotion/api-promotion';
+import { MyBabyPage } from '../my-baby/my-baby';
 
 /**
  * Generated class for the PromotionsPage page.
@@ -64,6 +65,10 @@ export class PromotionsPage {
 
   private goToProductDetail(item) {
     this.navCtrl.push(ProductInfoPage, { productInfo: item });
+  }
+
+  private goToSetup(){
+    this.navCtrl.push(MyBabyPage);
   }
 
 }

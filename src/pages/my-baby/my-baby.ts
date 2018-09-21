@@ -6,6 +6,7 @@ import { TamanhoModel } from '../../models/tamanho-model';
 import { LojasModel } from '../../models/lojas-model';
 import { Storage } from '@ionic/storage';
 import { ApiUserProvider } from '../../providers/api-user/api-user-data';
+import { PromotionsPage } from '../promotions/promotions';
 
 
 /**
@@ -165,11 +166,14 @@ export class MyBabyPage {
 
   private presentConfirm() {
     let alert = this.alertController.create({
-      title: 'Atualização de Cadastro Realizada',
-      message: 'Você alterou seus dados com suscesso!',
+      title: 'Atualização realizada com sucesso!',
+      message: 'Vamos monitorar os preços e te avisar quando encontrarmos fraldas em promoção.',
       buttons: [
         {
-          text: 'Ok'
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.push(PromotionsPage);
+          }
         }
       ]
     });
