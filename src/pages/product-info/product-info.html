@@ -7,7 +7,7 @@
 <ion-header color="primary">
 
   <ion-navbar color="primary">
-    <ion-title>{{productInfo.modelo.nome}}</ion-title>
+    <ion-title>{{productInfo.fralda.nome}}</ion-title>
     <ion-buttons right>
       <button (click)="showOverlay()" ion-button icon-only><ion-icon name="add-circle"></ion-icon></button>
     </ion-buttons>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="information-alert">
-      <div class="information-alert-title">{{productInfo.modelo.nome}}</div>
+      <div class="information-alert-title">{{productInfo.fralda.nome}}</div>
       <div class="information-alert-text">{{productInfo.tamanho.nome}}</div>
       <div class="un-price">{{productInfo.valorUnidade}}</div>
       <div class="pck-price">{{productInfo.valorPacote}}</div>
