@@ -17,11 +17,12 @@ export class ApiPromotionProvider {
   constructor(public restApiService:RestApiProvider) {
   }
 
-  getPromotions() {
+  getPromotions(userId: number) {
     let call: IRestApiCall = {
       baseUrl: SERVER_API_URL,
       endpoint: "/api/promocoes-app",
       body: null,
+      queryParams: { userId: userId },
       headers: {"Content-Type": "application/json"},
       method: RequestMethod.Get
     } 

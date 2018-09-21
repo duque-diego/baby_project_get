@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { ProductInfoPage } from '../product-info/product-info';
 import { ApiPromotionProvider } from '../../providers/api-promotion/api-promotion';
 
@@ -23,17 +24,32 @@ export class PromotionsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public storage: Storage,
     public apiPromotionProvider: ApiPromotionProvider,
-    public loadingCtrl: LoadingController) {}
+    public loadingCtrl: LoadingController) { }
 
   ionViewDidLoad() {
+    this.getUserData();
+  }
+
+  getUserData() {
+    this.storage.get('userData')
+      .then(
+        data => {
+          this.getPromotions(data.id);
+        },
+        error => console.error(error)
+      );
+  }
+
+  getPromotions(userId: number) {
     this.loading = this.loadingCtrl.create({
       content: 'Buscando promoções'
     });
 
     this.loading.present();
 
-    this.apiPromotionProvider.getPromotions().subscribe(
+    this.apiPromotionProvider.getPromotions(userId).subscribe(
       response => {
         console.log(response);
         this.promotions = response;
@@ -43,10 +59,10 @@ export class PromotionsPage {
         console.log(error);
         this.loading.dismiss();
       }
-    )
+    );
   }
 
-  private goToProductDetail(item){
+  private goToProductDetail(item) {
     this.navCtrl.push(ProductInfoPage, { productInfo: item });
   }
 
