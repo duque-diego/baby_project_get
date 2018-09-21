@@ -47,9 +47,9 @@
   </div>
 
   <div class="disccount-text">
-    <div class="inner-disccount-text">PEGUE 20% DE DESCONTO COM O CUPOM</div>
+    <div class="inner-disccount-text">PEGUE {{productInfo.discount}}% DE DESCONTO COM O CUPOM</div>
   </div>
-  <button class="outline-button" color="primary" ion-button round medium outline>PROMOCAODEFRALDAS20</button>
+  <button class="outline-button" color="primary" ion-button round medium outline>{{productInfo.cupom}}</button>
   <button class="outline-button" color="primary" ion-button round medium (click)="goToStore()">COMPRAR</button>
 
 </ion-content>
