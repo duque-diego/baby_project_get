@@ -57,7 +57,8 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let tamanho of tamanhos; let i = index;">
-        <div [ngClass]="tamanho?.checada ? 'round-button-div-checked':'round-button-div'" class="{{tamanho?.nome}}" (click)="selecionaTamanho(i)">{{tamanho?.nome}}</div>
+        <div *ngIf="tamanho.nome == 'RN+'" [ngClass]="tamanho?.checada ? 'round-button-div-checked':'round-button-div'" class="RN-mais" (click)="selecionaTamanho(i)">{{tamanho?.nome}}</div>
+        <div *ngIf="tamanho.nome != 'RN+'" [ngClass]="tamanho?.checada ? 'round-button-div-checked':'round-button-div'" class="{{tamanho?.nome}}" (click)="selecionaTamanho(i)">{{tamanho?.nome}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
