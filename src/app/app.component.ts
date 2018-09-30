@@ -35,19 +35,20 @@ export class MyApp {
                       error => console.error(error)
                     );
 
-      // this.oneSignal.startInit('424528ff-b383-4315-8ab7-46029c170923', '609666401907');
 
-      // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      this.oneSignal.startInit('424528ff-b383-4315-8ab7-46029c170923', '609666401907');
+
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
     
-      // this.oneSignal.handleNotificationReceived().subscribe(() => {
-      // // do something when notification is received
-      // });
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+      // do something when notification is received
+      });
     
-      // this.oneSignal.handleNotificationOpened().subscribe(() => {
-      //   // do something when a notification is opened
-      // });
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+      });
     
-      // this.oneSignal.endInit();
+      this.oneSignal.endInit();
     });
   }
 

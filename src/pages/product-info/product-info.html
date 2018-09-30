@@ -8,9 +8,9 @@
 
   <ion-navbar color="primary">
     <ion-title>{{productInfo.fralda.nome}}</ion-title>
-    <ion-buttons right>
+    <!-- <ion-buttons right>
       <button (click)="showOverlay()" ion-button icon-only><ion-icon name="add-circle"></ion-icon></button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div class="alerts-information-container">
+  <div class="alerts-information-container" (click)="shareApp()">
     <div class="number-alerts">
       <ion-icon name="share"></ion-icon> Compartilhar
     </div>
@@ -47,9 +47,9 @@
   </div>
 
   <div class="disccount-text">
-    <div class="inner-disccount-text">PEGUE {{productInfo.discount}}% DE DESCONTO COM O CUPOM</div>
+    <div  *ngIf="productInfo.discount" class="inner-disccount-text">PEGUE {{productInfo.discount}}% DE DESCONTO COM O CUPOM</div>
   </div>
-  <button class="outline-button" color="primary" ion-button round medium outline>{{productInfo.cupom}}</button>
+  <button *ngIf="productInfo.cupom" class="outline-button" color="primary" ion-button round medium outline>{{productInfo.cupom}}</button>
   <button class="outline-button" color="primary" ion-button round medium (click)="goToStore()">COMPRAR</button>
 
 </ion-content>

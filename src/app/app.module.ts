@@ -30,6 +30,7 @@ import { SasMaskDirective } from '../directives/sas-mask/sas-mask';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
 import { BrMaskerModule } from 'brmasker-ionic-3';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -82,14 +83,14 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
   providers: [
     StatusBar,
     SplashScreen,
-    //Facebook,
+    Facebook,
     RestApiProvider,
     ApiUserProvider,
     ApiPromotionProvider,
     ApiPreferenceProvider,
     InAppBrowser,
     OneSignal,
-    
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

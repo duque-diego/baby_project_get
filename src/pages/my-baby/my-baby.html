@@ -8,11 +8,11 @@
 
   <ion-navbar color="primary">
     <ion-title>MEUS BEBÊS</ion-title>
-    <ion-buttons right>
+    <!-- <ion-buttons right>
       <button (click)="showOverlay()" ion-button icon-only>
         <ion-icon name="add-circle"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
@@ -31,8 +31,9 @@
   </div>
 
   <div class="input-container-my-baby">
-    <div class="input-label">Peso</div>
-    <input type="number" class="custom-input" [(ngModel)]="bebe.peso">
+    <div class="input-label-kg">Peso</div>
+    <div class="kg">KG</div>
+    <input type="number" placeholder="3.800" class="money-input" step="0.001" value="0.000" [(ngModel)]="bebe.peso">
   </div>
   
   <div text-center class="title-text">FRALDAS</div>
@@ -56,11 +57,11 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let tamanho of tamanhos; let i = index;">
-        <div [ngClass]="tamanho?.checada ? 'round-button-div-checked':'round-button-div'" class="rn" (click)="selecionaTamanho(i)">{{tamanho?.nome}}</div>
+        <div [ngClass]="tamanho?.checada ? 'round-button-div-checked':'round-button-div'" class="{{tamanho?.nome}}" (click)="selecionaTamanho(i)">{{tamanho?.nome}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <div class="input-label">Lojas Favoritas</div>
+  <!-- <div class="input-label">Lojas Favoritas</div>
   <ion-grid>
     <ng-container *ngFor="let loja of lojas; let i = index;">
 
@@ -75,13 +76,14 @@
         </ion-col>
       </ion-row>
     </ng-container>
-  </ion-grid>
+  </ion-grid> -->
 
   <div class="input-container-my-baby">
-    <div class="input-label">Quanto você deseja pagar pro fralda? É com base nesse valor que iremos listar e
+    <div class="input-label">Quanto você deseja pagar por <b>unidade de fralda?</b> É com base nesse valor que iremos listar e
       te manter informado sobre as melhores promoções.
     </div>
-    <input type="text" class="custom-input" placeholder="(R$) 1,00" [brmasker]="{money: true, decimal: 2}" value="" [(ngModel)]="preferences.price" >
+    <div class="cifra">R$</div>
+    <input type="tel" class="money-input" placeholder="1,00" [brmasker]="{money: true, decimal: 2}" step="0.01" value='1.00' [(ngModel)]="preferences.price" >
   </div>
   <ion-grid>
     <ion-row>

@@ -14,9 +14,9 @@ import { PromotionsPage } from '../promotions/promotions';
 export class TabsPage {
 
   tab1Root = PromotionsPage;
-  tab2Root = AlertsPage;
-  tab3Root = MyBabyPage;
-  tab4Root = ProfilePage;
+  // tab2Root = AlertsPage;
+  tab2Root = MyBabyPage;
+  tab3Root = ProfilePage;
 
   constructor() {
 

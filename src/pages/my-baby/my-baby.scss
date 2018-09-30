@@ -37,6 +37,7 @@ page-my-baby {
         display: inline-block;
         vertical-align: middle;
         margin-left: 5px;
+        font-size: 1.2rem;
     }
 
     .round-button-div{
@@ -46,7 +47,7 @@ page-my-baby {
         color: white;
         // background-color: #119BF4;
         background-color: #91CBF6;
-        padding-top: 20%;
+        padding-top: 25%;
         font-size: 0.7em;
         font-weight: 700;
     }
@@ -58,33 +59,37 @@ page-my-baby {
         color: white;
          background-color: #119BF4;
         //background-color: #91CBF6;
-        padding-top: 20%;
+        padding-top: 25%;
         font-size: 0.7em;
         font-weight: 700;
     }
 
-    .rn{
-        padding-left: 16%;
+    .RN{
+        padding-left: 19%;
     }
 
-    .p{
+    .RN+{
+        padding-left: 11%;
+    }
+
+    .P{
+        padding-left: 31%;
+    }
+
+    .M{
         padding-left: 26%;
     }
 
-    .m{
-        padding-left: 22%;
+    .G{
+        padding-left: 29%;
     }
 
-    .g{
-        padding-left: 24%;
+    .XG{
+        padding-left: 21%;
     }
 
-    .xg{
-        padding-left: 17%;
-    }
-
-    .xxg{
-        padding-left: 11%;
+    .XXG{
+        padding-left: 13%;
     }
 
     .img-logo{
@@ -100,6 +105,45 @@ page-my-baby {
         margin-top: -6%;
         font-size: 0.75em;
         color: #119BF4;
+    }
+
+    .money-input {
+        border-radius: 25px;
+        border: 1px solid #119BF4;
+        padding: 10px;
+        width: 50%;
+        margin-left: 25%;
+        color: #119BF4;
+        padding-left: 4%;
+        background-color: #FFFEF2;
+    }
+
+    .cifra{
+        width: 10%;
+        position: relative;
+        height: 8%;
+        margin-left: 18%;
+        margin-bottom: 0%;
+        margin-top: 13%;
+        margin-bottom: -7%;
+        color: rgb(17, 155, 244);
+    }
+
+    .kg {
+        width: 10%;
+        position: relative;
+        height: 8%;
+        margin-left: 18%;
+        margin-bottom: 0%;
+        margin-top: 5%;
+        margin-bottom: -7%;
+        color: rgb(17, 155, 244);
+    }
+
+    .input-label-kg {
+        margin-left: 26%;
+        margin-bottom: 1%;
+        font-size: 0.8em;
     }
 
     ion-datetime {

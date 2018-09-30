@@ -97,4 +97,6 @@
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <allow-navigation href="http://192.168.1.38:8100" sessionid="c3dd5f5d" />
     <engine name="browser" spec="5.0.4" />
+    <engine name="android" spec="~6.1.2" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="~5.4.1" />
 </widget>

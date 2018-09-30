@@ -27,10 +27,13 @@ export class PromotionsPage {
     public navParams: NavParams,
     public storage: Storage,
     public apiPromotionProvider: ApiPromotionProvider,
-    public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController) {
+      //this.ga.trackView("Lista de promoções");
+    }
 
   ionViewDidLoad() {
     this.getUserData();
+    //this.ga.trackView("Lista de promoções");
   }
 
   getUserData() {

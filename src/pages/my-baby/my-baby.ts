@@ -7,6 +7,7 @@ import { LojasModel } from '../../models/lojas-model';
 import { Storage } from '@ionic/storage';
 import { ApiUserProvider } from '../../providers/api-user/api-user-data';
 import { PromotionsPage } from '../promotions/promotions';
+import { TabsPage } from '../tabs/tabs';
 
 
 /**
@@ -41,7 +42,9 @@ export class MyBabyPage {
     public apiPreferenceProvider: ApiPreferenceProvider,
     public alertController: AlertController,
     public loadingCtrl: LoadingController,
-  ) {}
+  ) {
+    this.preferences.price = "1,00";
+  }
 
   ionViewDidLoad() {
     this.loading = this.loadingCtrl.create({
@@ -172,7 +175,9 @@ export class MyBabyPage {
         {
           text: 'Ok',
           handler: () => {
-            this.navCtrl.push(PromotionsPage);
+            this.navCtrl.setRoot(TabsPage);
+            
+            
           }
         }
       ]

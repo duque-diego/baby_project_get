@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the ProductInfoPage page.
@@ -23,7 +24,8 @@ export class ProductInfoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public inAppBrowser: InAppBrowser) {
+    public inAppBrowser: InAppBrowser,
+    private socialSharing: SocialSharing) {
 
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
     this.productInfo = navParams.get('productInfo');
@@ -38,13 +40,21 @@ export class ProductInfoPage {
       zoom: 'no'
     };
 
-    if (this.productInfo.promoLink) {
-      this.inAppBrowser.create(this.productInfo.promoLink, '_blank', options);
+    if (this.productInfo.promotionLink) {
+      this.inAppBrowser.create(this.productInfo.promotionLink, '_blank', options);
     }
   }
 
   public hideOverlay() {
     this.overlayHidden = true;
+  }
+
+  private shareApp(){
+    this.socialSharing.shareViaWhatsApp('Olá estou usando o promoFraldas e encontrei uma promoção ótima para você aproveitar. Baixe pelo link: www.promocaodefraldas.com', '', 'www.promocaodefraldas.com').then(() => {
+      console.log("compartilhou");
+    }).catch(() => {
+      console.log("deu ruim");
+    });    
   }
 
   public showOverlay(){
