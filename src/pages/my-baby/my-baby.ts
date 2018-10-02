@@ -31,6 +31,10 @@ export class MyBabyPage {
   tamanhos: TamanhoModel[] = [];
   lojas: LojasModel[] = [];
   bebe: any = {};
+
+  valorUnidadeMaxVar: any;
+  receberPromo: boolean = false;
+
   userData: any;
   loading: any;
 
@@ -43,7 +47,6 @@ export class MyBabyPage {
     public alertController: AlertController,
     public loadingCtrl: LoadingController,
   ) {
-    this.preferences.price = "1,00";
   }
 
   ionViewDidLoad() {
@@ -74,6 +77,8 @@ export class MyBabyPage {
           this.tamanhos = this.formatPreferenceArray(data['tamanhos'], allPreferences['tamanhos']);
           this.lojas = this.formatPreferenceArray(data['lojas'], allPreferences['lojas']);
           this.bebe = this.formatBebeData();
+          this.valorUnidadeMaxVar = this.userData.valorUnidadeMax ? (this.userData.valorUnidadeMax + '').replace('.', ',') : null;
+          this.receberPromo = this.userData.receberPromo;
       
           this.loading.dismiss();
         },
@@ -142,7 +147,7 @@ export class MyBabyPage {
     }
   }
 
-  public sendPreferences() {
+  public sendPreferences(valUnidadeMax) {
     this.loading = this.loadingCtrl.create({
       content: 'Realizando cadastro...'
     });
@@ -152,6 +157,9 @@ export class MyBabyPage {
     this.userData.marcas = this.marcas.filter(item => item.checada);
     this.userData.tamanhos = this.tamanhos.filter(item => item.checada);
     this.userData.lojas = this.lojas.filter(item => item.checada);
+
+    this.userData.valorUnidadeMax = valUnidadeMax ? valUnidadeMax.replace(',', '.') : null;
+    this.userData.receberPromo = this.receberPromo;
 
     let bebeFormatted = Object.assign({}, this.bebe);
     this.userData.bebes = [];

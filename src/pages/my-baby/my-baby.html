@@ -84,15 +84,15 @@
       te manter informado sobre as melhores promoções.
     </div>
     <div class="cifra">R$</div>
-    <input type="tel" class="money-input" placeholder="1,00" [brmasker]="{money: true, decimal: 2}" step="0.01" value='1.00' [(ngModel)]="preferences.price" >
+    <input id="valorUnidadeMax" type="tel" class="money-input" placeholder="1,00" [brmasker]="{money: true, decimal: 2}" step="0.01" [(ngModel)]="valorUnidadeMaxVar" #valorUnidadeMax>
   </div>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-checkbox color="primary" checked={{preferences.checked}} [(ngModel)]="preferences.checked"></ion-checkbox>
+        <ion-checkbox color="primary" [(ngModel)]="receberPromo"></ion-checkbox>
         <ion-label class="my-baby-remember-me">Avise-me de promoções imperdíveis.</ion-label>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <button class="button-text button-login" color="primary" (click)="sendPreferences()" ion-button full round medium>ENVIAR</button>
+  <button class="button-text button-login" color="primary" (click)="sendPreferences(valorUnidadeMax.value)" ion-button full round medium>ENVIAR</button>
 </ion-content>
