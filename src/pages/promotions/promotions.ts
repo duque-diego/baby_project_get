@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Tabs } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ProductInfoPage } from '../product-info/product-info';
 import { ApiPromotionProvider } from '../../providers/api-promotion/api-promotion';
@@ -21,6 +21,7 @@ export class PromotionsPage {
 
   promotions: any = [];
   loading: any;
+  tab:Tabs;
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +30,7 @@ export class PromotionsPage {
     public apiPromotionProvider: ApiPromotionProvider,
     public loadingCtrl: LoadingController) {
       //this.ga.trackView("Lista de promoções");
+      this.tab = this.navCtrl.parent;
     }
 
   ionViewDidLoad() {
@@ -71,7 +73,7 @@ export class PromotionsPage {
   }
 
   private goToSetup(){
-    this.navCtrl.push(MyBabyPage);
+    this.tab.select(1);
   }
 
 }

@@ -1,6 +1,6 @@
 import { ApiPreferenceProvider } from './../../providers/api-preference/api-preference-data';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, App, Tabs } from 'ionic-angular';
 import { FraldaModel } from '../../models/fralda-model';
 import { TamanhoModel } from '../../models/tamanho-model';
 import { LojasModel } from '../../models/lojas-model';
@@ -34,7 +34,7 @@ export class MyBabyPage {
 
   valorUnidadeMaxVar: any;
   receberPromo: boolean = false;
-
+  tab:Tabs;
   userData: any;
   loading: any;
 
@@ -46,7 +46,9 @@ export class MyBabyPage {
     public apiPreferenceProvider: ApiPreferenceProvider,
     public alertController: AlertController,
     public loadingCtrl: LoadingController,
+    public app:App
   ) {
+      this.tab = this.navCtrl.parent;
   }
 
   ionViewDidLoad() {
@@ -112,6 +114,7 @@ export class MyBabyPage {
     if (this.userData && this.userData.bebes && this.userData.bebes.length > 0) {
       bebeFormatted = this.userData.bebes[0];
       bebeFormatted.dataNascimento = new Date(bebeFormatted.dataNascimento).toISOString();
+      bebeFormatted.peso = this.userData.bebes[0].peso.toFixed(3);
     }
 
     return bebeFormatted;
@@ -164,6 +167,7 @@ export class MyBabyPage {
     let bebeFormatted = Object.assign({}, this.bebe);
     this.userData.bebes = [];
     this.userData.bebes[0] = bebeFormatted;
+    this.userData.bebes[0].peso = this.userData.bebes[0].peso.toFixed(3);
 
     this.apiUserProvider.updateUserData(this.userData).subscribe(
       response => {
@@ -183,9 +187,7 @@ export class MyBabyPage {
         {
           text: 'Ok',
           handler: () => {
-            this.navCtrl.setRoot(TabsPage);
-            
-            
+            this.tab.select(0);
           }
         }
       ]
