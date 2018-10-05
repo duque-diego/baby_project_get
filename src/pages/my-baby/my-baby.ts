@@ -114,7 +114,9 @@ export class MyBabyPage {
     if (this.userData && this.userData.bebes && this.userData.bebes.length > 0) {
       bebeFormatted = this.userData.bebes[0];
       bebeFormatted.dataNascimento = new Date(bebeFormatted.dataNascimento).toISOString();
-      bebeFormatted.peso = this.userData.bebes[0].peso.toFixed(3);
+      if(this.userData.bebes[0].peso){
+        bebeFormatted.peso = this.userData.bebes[0].peso.toFixed(3);  
+      }
     }
 
     return bebeFormatted;
@@ -167,7 +169,7 @@ export class MyBabyPage {
     let bebeFormatted = Object.assign({}, this.bebe);
     this.userData.bebes = [];
     this.userData.bebes[0] = bebeFormatted;
-    this.userData.bebes[0].peso = this.userData.bebes[0].peso.toFixed(3);
+    // this.userData.bebes[0].peso = this.userData.bebes[0].peso.toFixed(3);
 
     this.apiUserProvider.updateUserData(this.userData).subscribe(
       response => {
