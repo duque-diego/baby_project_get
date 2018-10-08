@@ -21,7 +21,8 @@ export class PromotionsPage {
 
   promotions: any = [];
   loading: any;
-  tab:Tabs;
+  tab: Tabs;
+  userData: any;
 
   constructor(
     public navCtrl: NavController,
@@ -29,20 +30,24 @@ export class PromotionsPage {
     public storage: Storage,
     public apiPromotionProvider: ApiPromotionProvider,
     public loadingCtrl: LoadingController) {
-      //this.ga.trackView("Lista de promoções");
-      this.tab = this.navCtrl.parent;
-    }
-
-  ionViewDidLoad() {
-    this.getUserData();
     //this.ga.trackView("Lista de promoções");
+    this.tab = this.navCtrl.parent;
+  }
+
+  ionViewDidEnter() {
+    if (this.userData) {
+      this.getPromotions(this.userData.id);
+    } else {
+      this.getUserData();
+    }
   }
 
   getUserData() {
     this.storage.get('userData')
       .then(
         data => {
-          this.getPromotions(data.id);
+          this.userData = data;
+          this.getPromotions(this.userData.id);
         },
         error => console.error(error)
       );
@@ -72,7 +77,7 @@ export class PromotionsPage {
     this.navCtrl.push(ProductInfoPage, { productInfo: item });
   }
 
-  private goToSetup(){
+  private goToSetup() {
     this.tab.select(1);
   }
 
