@@ -113,13 +113,18 @@ export class MyBabyPage {
 
     if (this.userData && this.userData.bebes && this.userData.bebes.length > 0) {
       bebeFormatted = this.userData.bebes[0];
-      bebeFormatted.dataNascimento = new Date(bebeFormatted.dataNascimento).toISOString();
+      bebeFormatted.dataNascimento = this.formatZuluDate(bebeFormatted.dataNascimento).toISOString();
       if(this.userData.bebes[0].peso){
         bebeFormatted.peso = this.userData.bebes[0].peso.toFixed(3);  
       }
     }
 
     return bebeFormatted;
+  }
+
+  private formatZuluDate(dateStr) {
+    var a = dateStr.split(/[^0-9]/);
+    return new Date (a[0],a[1]-1,a[2],a[3],a[4],a[5]);
   }
 
   public hideOverlay() {
