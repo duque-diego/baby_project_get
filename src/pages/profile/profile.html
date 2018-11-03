@@ -30,14 +30,14 @@
       
       <div class="input-container">
         <div class="input-label">Senha</div> 
-        <input #passwordInput type="password" [(ngModel)]="profileData.senha" class="custom-input" (input)="onChanges($event.target.value)">
+        <input #passwordInput type="password" [(ngModel)]="profileData.senha" class="custom-input" (input)="onChanges($event.target.value)" maxlength="10">
         <button class="view-password-button-login password-button" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleViewPassword($event)">
           <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewPasswordValue ? 'light' : 'primary' }}"></ion-icon>
         </button>
       </div>
       <div class="input-container">
         <div class="input-label">Repetir senha</div> 
-        <input #confirmPasswordInput type="password" [(ngModel)]="profileData.confirmPassword" class="custom-input" (input)="onChanges($event.target.value)">
+        <input #confirmPasswordInput type="password" [(ngModel)]="profileData.confirmPassword" class="custom-input" (input)="onChanges($event.target.value)" maxlength="10">
         <button class="view-password-button-login repeat-password-button" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleConfirmPassword($event)">
           <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewConfirmPasswordValue ? 'light' : 'primary' }}"></ion-icon>
         </button>

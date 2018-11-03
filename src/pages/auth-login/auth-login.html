@@ -17,7 +17,7 @@
       </div>
       <div class="input-container">
         <div class="input-label">Senha</div> 
-        <input #passwordInput type="password" [(ngModel)]="passwordValue" formControlName="password" maxlength="6" class="custom-input">
+        <input #passwordInput type="password" [(ngModel)]="passwordValue" formControlName="password" maxlength="10" class="custom-input">
         <button class="view-password-button-login" ion-button icon-only item-end clear no-margin color="secondary" (click)="toggleViewPassword($event)">
           <ion-icon name="{{ viewPasswordValue ? 'eye' : 'eye-off' }}" color="{{ viewPasswordValue ? 'light' : 'primary' }}"></ion-icon>
         </button>
