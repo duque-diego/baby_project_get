@@ -98,5 +98,5 @@
     <allow-navigation href="http://192.168.1.38:8100" sessionid="c3dd5f5d" />
     <plugin name="cordova-plugin-x-socialsharing" spec="~5.4.1" />
     <engine name="browser" spec="5.0.4" />
-    <engine name="android" spec="7.1.1" />
+    <engine name="android" spec="~7.1.1" />
 </widget>
